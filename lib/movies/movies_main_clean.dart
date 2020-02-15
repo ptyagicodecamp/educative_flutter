@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:ui' as ui;
 
-//Model + backdrop blurred
+//Clean vertical listing
 void main() => runApp(MoviesApp());
 
 class MoviesApp extends StatelessWidget {
