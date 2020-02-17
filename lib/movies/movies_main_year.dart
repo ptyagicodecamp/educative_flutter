@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-//Model + backdrop blurred
+//Popular movies from last three years
 void main() => runApp(MoviesApp());
 
 class MoviesApp extends StatelessWidget {
