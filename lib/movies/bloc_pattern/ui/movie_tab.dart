@@ -38,7 +38,7 @@ class _MovieTabScreenState extends State<MovieTabScreen> {
             icon: selectedIndex == 0
                 ? Icon(
                     Icons.movie,
-                    color: Colors.deepPurple,
+                    color: Colors.deepOrange,
                   )
                 : Icon(Icons.movie),
             title: Text('2020'),
@@ -47,7 +47,7 @@ class _MovieTabScreenState extends State<MovieTabScreen> {
             icon: selectedIndex == 1
                 ? Icon(
                     Icons.movie,
-                    color: Colors.deepPurple,
+                    color: Colors.orange,
                   )
                 : Icon(Icons.movie),
             title: Text('2019'),
@@ -56,7 +56,7 @@ class _MovieTabScreenState extends State<MovieTabScreen> {
             icon: selectedIndex == 2
                 ? Icon(
                     Icons.movie,
-                    color: Colors.deepPurple,
+                    color: Colors.amber,
                   )
                 : Icon(Icons.movie),
             title: Text('2018'),
