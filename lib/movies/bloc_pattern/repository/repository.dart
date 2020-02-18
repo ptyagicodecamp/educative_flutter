@@ -6,7 +6,4 @@ class Repository {
 
   Future<List<Movie>> moviesByTheYear(String year) =>
       moviesAPI.getBestMoviesByYear(year);
-
-//  Stream<List<MovieModel>> moviesByTheYear(String year) =>
-//      MoviesProvider.getBestMoviesByYear(year);
 }

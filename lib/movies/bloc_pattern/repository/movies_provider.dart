@@ -7,15 +7,7 @@ class MoviesProvider {
 
   /// Movies listing by the year
   Future<List<Movie>> getBestMoviesByYear(String year) async {
-    List<Movie> movies = List<Movie>();
     return await MoviesProvider.getJsonBestMovies(year);
-
-//    var results = data['results'];
-//    results.forEach((element) {
-//      movies.add(MovieModel.fromJson(element));
-//    });
-
-//    return movies;
   }
 
   static Stream<List<Movie>> streamFromFuture<T>(
