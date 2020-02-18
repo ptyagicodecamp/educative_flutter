@@ -11,7 +11,7 @@ class MoviesMainScreen extends StatelessWidget {
         stream: BlocProvider.of<MoviesBloc>(context).stream,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return MovieScreen(
+            return MovieTabScreen(
               movies: snapshot.data,
             );
           } else if (snapshot.hasError) {

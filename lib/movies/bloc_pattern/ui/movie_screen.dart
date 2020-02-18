@@ -6,15 +6,15 @@ import 'package:flutter_course/movies/bloc_pattern/bloc/movies_bloc.dart';
 import 'package:flutter_course/movies/bloc_pattern/model/movie.dart';
 import '../../movie_app/movies_main.dart';
 
-class MovieScreen extends StatefulWidget {
+class MovieTabScreen extends StatefulWidget {
   final List<Movie> movies;
 
-  const MovieScreen({this.movies});
+  const MovieTabScreen({this.movies});
   @override
-  _MovieScreenState createState() => _MovieScreenState();
+  _MovieTabScreenState createState() => _MovieTabScreenState();
 }
 
-class _MovieScreenState extends State<MovieScreen> {
+class _MovieTabScreenState extends State<MovieTabScreen> {
   static String selectedYear = "2020";
   static int selectedIndex = 0;
 
