@@ -194,8 +194,8 @@ class MovieTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    screenWidth = MediaQuery.of(context).size.width / 2;
-    screenHeight = MediaQuery.of(context).size.height / 4;
+    final screenWidth = MediaQuery.of(context).size.width / 2;
+    final screenHeight = MediaQuery.of(context).size.height / 4;
 
     return Stack(
       alignment: AlignmentDirectional.topStart,
