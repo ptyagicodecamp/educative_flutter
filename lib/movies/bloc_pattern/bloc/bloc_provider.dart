@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'bloc.dart';
 
+//Helper class to access BlocProviders
 class BlocProvider<T extends Bloc> extends StatefulWidget {
   final Widget child;
   final T bloc;

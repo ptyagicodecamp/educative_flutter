@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_course/movies/bloc_pattern/bloc/bloc_provider.dart';
 import 'package:flutter_course/movies/bloc_pattern/bloc/movies_bloc.dart';
 import 'package:flutter_course/movies/bloc_pattern/model/movie.dart';
-import 'movie_screen.dart';
+import 'movie_tab.dart';
 
 class MoviesMainScreen extends StatelessWidget {
   @override
