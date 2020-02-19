@@ -20,11 +20,12 @@ class MoviesApp extends StatelessWidget {
 class MoviesProvider {
   static final String imagePathPrefix = 'https://image.tmdb.org/t/p/w500/';
 
+  //Fetches popular movies listing
   static Future<Map> getJson() async {
-    var apiKey = "2769496ca4cfd8df18f9fea0a40d98e6";
-    var apiEndPoint =
-        "http://api.themoviedb.org/3/discover/movie?api_key=${apiKey}";
-    var apiResponse = await http.get(apiEndPoint);
+    final apiKey = "2769496ca4cfd8df18f9fea0a40d98e6";
+    final apiEndPoint =
+        "http://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc";
+    final apiResponse = await http.get(apiEndPoint);
     return json.decode(apiResponse.body); //dart:convert
   }
 }
@@ -45,38 +46,21 @@ class MovieModel {
   final String overview;
   final String release_date;
 
-  MovieModel(
-      {this.id,
-      this.popularity,
-      this.vote_count,
-      this.video,
-      this.poster_path,
-      this.backdrop_path,
-      this.adult,
-      this.original_language,
-      this.original_title,
-      this.genre_ids,
-      this.title,
-      this.vote_average,
-      this.overview,
-      this.release_date});
-
-  factory MovieModel.fromJson(Map<String, dynamic> json) {
-    return MovieModel(
-        id: json['id'],
-        popularity: json['popularity'],
-        vote_count: json['vote_count'],
-        video: json['video'],
-        poster_path: json['poster_path'],
-        adult: json['adult'],
-        original_language: json['original_language'],
-        original_title: json['original_title'],
-        genre_ids: json['genre_ids'],
-        title: json['title'],
-        vote_average: json['vote_average'],
-        overview: json['overview'],
-        release_date: json['release_date']);
-  }
+  MovieModel.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        popularity = json['popularity'],
+        vote_count = json['vote_count'],
+        video = json['video'],
+        poster_path = json['poster_path'],
+        adult = json['adult'],
+        original_language = json['original_language'],
+        original_title = json['original_title'],
+        genre_ids = json['genre_ids'],
+        title = json['title'],
+        vote_average = json['vote_average'],
+        overview = json['overview'],
+        release_date = json['release_date'],
+        backdrop_path = json['backdrop_path'];
 }
 
 class MoviesListing extends StatefulWidget {
@@ -85,15 +69,12 @@ class MoviesListing extends StatefulWidget {
 }
 
 class _MoviesListingState extends State<MoviesListing> {
-  var moviesData;
   List<MovieModel> movies = List<MovieModel>();
 
   fetchMovies() async {
     var data = await MoviesProvider.getJson();
 
     setState(() {
-      moviesData = data['results'];
-
       List<dynamic> results = data['results'];
       results.forEach((element) {
         movies.add(MovieModel.fromJson(element));
@@ -109,7 +90,7 @@ class _MoviesListingState extends State<MoviesListing> {
 
   @override
   Widget build(BuildContext context) {
-    fetchMovies();
+    //fetchMovies();
 
     return Scaffold(
       body: ListView.builder(
@@ -118,17 +99,10 @@ class _MoviesListingState extends State<MoviesListing> {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ListTile(context, index),
+            child: MovieTile(movies, index),
           );
         },
       ),
-    );
-  }
-
-  Widget ListTile(BuildContext context, int index) {
-    return Container(
-      margin: EdgeInsets.all(8.0),
-      child: MovieTile(movies, index),
     );
   }
 }
@@ -154,25 +128,27 @@ class MovieTile extends StatelessWidget {
                       top: 16, left: 8.0, right: 8.0, bottom: 8),
                   child: Column(
                     children: <Widget>[
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        height: MediaQuery.of(context).size.height / 4,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.grey,
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  MoviesProvider.imagePathPrefix +
-                                      movies[index].poster_path),
-                              fit: BoxFit.cover),
-                          boxShadow: [
-                            BoxShadow(
+                      movies[index].poster_path != null
+                          ? Container(
+                              width: MediaQuery.of(context).size.width / 2,
+                              height: MediaQuery.of(context).size.height / 4,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
                                 color: Colors.grey,
-                                blurRadius: 3.0,
-                                offset: Offset(1.0, 3.0)),
-                          ],
-                        ),
-                      ),
+                                image: DecorationImage(
+                                    image: NetworkImage(
+                                        MoviesProvider.imagePathPrefix +
+                                            movies[index].poster_path),
+                                    fit: BoxFit.cover),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey,
+                                      blurRadius: 3.0,
+                                      offset: Offset(1.0, 3.0)),
+                                ],
+                              ),
+                            )
+                          : Container(),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
