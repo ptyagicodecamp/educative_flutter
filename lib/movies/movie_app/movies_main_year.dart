@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 //Popular movies from last three years
+//Use Stack, Positioned widgets
 void main() => runApp(MoviesApp());
 
 class MoviesApp extends StatelessWidget {

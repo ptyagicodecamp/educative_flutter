@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-//No Data Model
+//No Data Model.
+//Example-1 for Flutter course
 void main() => runApp(MoviesApp());
 
 class MoviesApp extends StatelessWidget {

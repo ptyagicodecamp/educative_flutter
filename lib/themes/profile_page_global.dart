@@ -2,14 +2,58 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(ContactProfilePage());
 
+class AppColors {
+  static Color icon_color = Colors.indigo.shade800;
+}
+
+class MyAppThemes {
+  static ThemeData AppThemeLight(BuildContext context) {
+    return ThemeData(
+      // Define the default brightness and colors for the overall app.
+      brightness: Brightness.light,
+      appBarTheme: AppBarTheme(
+        color: Colors.white,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: Colors.indigo.shade800,
+      ),
+
+      //custom font for the default font family.
+      //fontFamily: 'Sriracha',
+    );
+  }
+
+  static ThemeData AppThemeDark(BuildContext context) {
+    return ThemeData(
+      // Define the default brightness and colors for the overall app.
+      brightness: Brightness.dark,
+      appBarTheme: AppBarTheme(
+        color: Colors.black,
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: Colors.orange,
+      ),
+
+      //custom font for the default font family.
+      // fontFamily: 'Sriracha',
+    );
+  }
+}
+
 class ContactProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: MyAppThemes.AppThemeDark(context),
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
           leading: Icon(
             Icons.arrow_back,
             color: Colors.black,
@@ -17,7 +61,7 @@ class ContactProfilePage extends StatelessWidget {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.star_border),
-              color: Colors.black,
+              //color: Colors.black,
               onPressed: () {
                 print("Contact is starred");
               },
@@ -47,7 +91,7 @@ class ContactProfilePage extends StatelessWidget {
                           "Priyanka Tyagi",
                           style: TextStyle(fontSize: 30),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -67,6 +111,24 @@ class ContactProfilePage extends StatelessWidget {
                       buildPayButton(),
                     ],
                   ),
+//                  child: Theme(
+//                    data: ThemeData(
+//                      iconTheme: IconThemeData(
+//                        color: Colors.pink,
+//                      ),
+//                    ),
+//                    child: Row(
+//                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                      children: <Widget>[
+//                        buildCallButton(),
+//                        buildTextButton(),
+//                        buildVideoCallButton(),
+//                        buildEmailButton(),
+//                        buildDirectionsButton(),
+//                        buildPayButton(),
+//                      ],
+//                    ),
+//                  ),
                 ),
                 Divider(
                   color: Colors.grey,
@@ -95,7 +157,6 @@ class ContactProfilePage extends StatelessWidget {
         IconButton(
           icon: Icon(
             Icons.call,
-            color: Colors.indigo.shade800,
           ),
           onPressed: () {},
         ),
@@ -110,7 +171,6 @@ class ContactProfilePage extends StatelessWidget {
         IconButton(
           icon: Icon(
             Icons.message,
-            color: Colors.indigo.shade800,
           ),
           onPressed: () {},
         ),
@@ -125,7 +185,6 @@ class ContactProfilePage extends StatelessWidget {
         IconButton(
           icon: Icon(
             Icons.video_call,
-            color: Colors.indigo.shade800,
           ),
           onPressed: () {},
         ),
@@ -140,7 +199,6 @@ class ContactProfilePage extends StatelessWidget {
         IconButton(
           icon: Icon(
             Icons.email,
-            color: Colors.indigo.shade800,
           ),
           onPressed: () {},
         ),
@@ -155,7 +213,6 @@ class ContactProfilePage extends StatelessWidget {
         IconButton(
           icon: Icon(
             Icons.directions,
-            color: Colors.indigo.shade800,
           ),
           onPressed: () {},
         ),
@@ -170,7 +227,6 @@ class ContactProfilePage extends StatelessWidget {
         IconButton(
           icon: Icon(
             Icons.attach_money,
-            color: Colors.indigo.shade800,
           ),
           onPressed: () {},
         ),
@@ -181,12 +237,17 @@ class ContactProfilePage extends StatelessWidget {
 
   Widget mobilePhoneListTile() {
     return ListTile(
-      leading: Icon(Icons.call),
+      leading: Icon(
+        Icons.call,
+        color: Colors.grey,
+      ),
       title: Text("330-803-3390"),
       subtitle: Text("mobile"),
       trailing: IconButton(
-        icon: Icon(Icons.message),
-        color: Colors.indigo.shade500,
+        icon: Icon(
+          Icons.message,
+        ),
+        //color: AppColors.icon_color,
         onPressed: () {},
       ),
     );
@@ -198,8 +259,10 @@ class ContactProfilePage extends StatelessWidget {
       title: Text("440-440-3390"),
       subtitle: Text("other"),
       trailing: IconButton(
-        icon: Icon(Icons.message),
-        color: Colors.indigo.shade500,
+        icon: Icon(
+          Icons.message,
+          // color: AppColors.icon_color,
+        ),
         onPressed: () {},
       ),
     );
@@ -207,7 +270,10 @@ class ContactProfilePage extends StatelessWidget {
 
   Widget emailListTile() {
     return ListTile(
-      leading: Icon(Icons.email),
+      leading: Icon(
+        Icons.email,
+        color: Colors.grey,
+      ),
       title: Text("priyanka@priyanka.com"),
       subtitle: Text("work"),
     );
@@ -215,12 +281,17 @@ class ContactProfilePage extends StatelessWidget {
 
   Widget addressListTile() {
     return ListTile(
-      leading: Icon(Icons.location_on),
+      leading: Icon(
+        Icons.location_on,
+        color: Colors.grey,
+      ),
       title: Text("234 Sunset St, Burlingame"),
       subtitle: Text("home"),
       trailing: IconButton(
-        icon: Icon(Icons.directions),
-        color: Colors.indigo.shade500,
+        icon: Icon(
+          Icons.directions,
+        ),
+        //color: AppColors.icon_color,
         onPressed: () {},
       ),
     );
